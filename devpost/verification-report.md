@@ -19,7 +19,7 @@
 
 - **Automated Tests**:
   - Command: `npm test`
-  - Result: **29 of 29 tests passing** across 6 test files in 2.92s.
+  - Result: **32 of 32 tests passing** across 7 test files in 2.86s.
   - Invariants: All 10 invariants verified (integer half-hour units, deterministic priority ranking, daily capacity ceiling, total capacity ceiling, completed block immutability, zero double-counting, single deduction recovery, mathematical feasibility, soft starvation, and quarantine persistence).
 - **Production Bundle**:
   - Command: `npm run build`
