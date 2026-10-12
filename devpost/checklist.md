@@ -29,7 +29,7 @@ Build mode: fast
   Learner check: In the running app, click "Load Sample Exam", click "Generate Study Plan", and inspect the 4 day cards to verify the allocations (Day 1: Trees 2h, Graphs 2h; Day 4: Sorting 1h, Arrays 2h, Review buffer 1h).
   Commit: `Implement deterministic scheduler and schedule display`
 
-- [ ] **3. Implement adaptive recovery and schedule diff engine**
+- [x] **3. Implement adaptive recovery and schedule diff engine**
   Becomes usable: The "I fell behind" recovery action allows reporting missed study hours, reducing today's free capacity, recalculating the remaining schedule strictly within future availability, and rendering the dynamic RecoveryBanner with actual schedule-diff sentences.
   Why now: This is the Unique Kernel of ExamPilot. Building it right after the core schedule display proves the primary differentiator of the application.
   PRD ref: `prd.md > 5. Adaptive Recovery & Real Schedule Diff Derivation`

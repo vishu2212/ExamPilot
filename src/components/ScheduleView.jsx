@@ -1,5 +1,6 @@
 import React from 'react';
 import { FeasibilityBanner } from './FeasibilityBanner.jsx';
+import { RecoveryBanner } from './RecoveryBanner.jsx';
 import { DayCard } from './DayCard.jsx';
 import { daysBetween } from '../lib/dates.js';
 
@@ -8,11 +9,12 @@ export function ScheduleView({
   derived,
   todayIndex = 0,
   onOpenMissedModal,
-  onToggleBlock
+  onToggleBlock,
+  onDismissChange
 }) {
   if (!planState || !derived) return null;
 
-  const { exam, topics, blocks, missedUnitsByDay } = planState;
+  const { exam, topics, blocks, missedUnitsByDay, lastChange } = planState;
   const numDays = daysBetween(exam.planStartDate, exam.examDate);
 
   const topicsById = {};
@@ -31,8 +33,15 @@ export function ScheduleView({
     }
   });
 
+  const todayFreeUnits = derived.dayCapacities[todayIndex] || 0;
+
   return (
     <div className="space-y-6">
+      {/* Recovery diff banner (shown if schedule was recalculated via recovery) */}
+      {lastChange && (
+        <RecoveryBanner lastChange={lastChange} onDismiss={onDismissChange} />
+      )}
+
       {/* Feasibility / Triage notification */}
       <FeasibilityBanner derived={derived} topics={topics} />
 
@@ -51,7 +60,9 @@ export function ScheduleView({
           <button
             type="button"
             onClick={onOpenMissedModal}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-3 py-1.5 text-xs font-semibold text-rose-700 shadow-xs transition-colors hover:bg-rose-100 hover:text-rose-800"
+            disabled={todayFreeUnits <= 0}
+            className="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-3 py-1.5 text-xs font-semibold text-rose-700 shadow-xs transition-colors hover:bg-rose-100 hover:text-rose-800 disabled:cursor-not-allowed disabled:opacity-50"
+            title={todayFreeUnits <= 0 ? 'No study hours left to miss today' : 'Report missed study time'}
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />

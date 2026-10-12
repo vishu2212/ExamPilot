@@ -4,6 +4,7 @@ import { ExamSetupForm } from './components/ExamSetupForm.jsx';
 import { EmptyState } from './components/EmptyState.jsx';
 import { ScheduleView } from './components/ScheduleView.jsx';
 import { TopicProgressList } from './components/TopicProgressList.jsx';
+import { MissedTimeDialog } from './components/MissedTimeDialog.jsx';
 import { Footer } from './components/Footer.jsx';
 import { today, daysBetween } from './lib/dates.js';
 import { derive } from './lib/scheduler.js';
@@ -16,6 +17,7 @@ export default function App() {
   const [formKey, setFormKey] = useState(0);
   const [initialFormValues, setInitialFormValues] = useState(null);
   const [showEditForm, setShowEditForm] = useState(false);
+  const [isMissedModalOpen, setIsMissedModalOpen] = useState(false);
 
   // Derived calculations
   const todayIndex = planState
@@ -51,6 +53,24 @@ export default function App() {
     setInitialFormValues(null);
     setShowEditForm(false);
     setFormKey((k) => k + 1);
+  };
+
+  const handleToggleBlock = (blockId) => {
+    dispatch({
+      type: 'TOGGLE_BLOCK',
+      payload: { blockId, todayIndex }
+    });
+  };
+
+  const handleConfirmMissed = (units) => {
+    dispatch({
+      type: 'REPORT_MISSED',
+      payload: { units, todayIndex }
+    });
+  };
+
+  const handleDismissChange = () => {
+    dispatch({ type: 'DISMISS_CHANGE' });
   };
 
   return (
@@ -133,11 +153,25 @@ export default function App() {
                 planState={planState}
                 derived={derived}
                 todayIndex={todayIndex}
+                onOpenMissedModal={() => setIsMissedModalOpen(true)}
+                onToggleBlock={handleToggleBlock}
+                onDismissChange={handleDismissChange}
               />
             </div>
           </div>
         )}
       </main>
+
+      {/* Missed Time Recovery Dialog */}
+      {planState && derived && (
+        <MissedTimeDialog
+          isOpen={isMissedModalOpen}
+          todayFreeUnits={derived.dayCapacities[todayIndex] || 0}
+          todayIndex={todayIndex}
+          onConfirm={handleConfirmMissed}
+          onClose={() => setIsMissedModalOpen(false)}
+        />
+      )}
 
       <Footer hasPlan={Boolean(planState)} onReset={handleReset} />
     </div>
