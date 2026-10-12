@@ -39,7 +39,7 @@ Build mode: fast
   Learner check: Click "I fell behind" on Day 1, enter 2 hours, confirm, and verify that Day 1 shows 0h free and the RecoveryBanner details what shifted into Days 2–4.
   Commit: `Implement adaptive recovery and schedule diff engine`
 
-- [ ] **4. Add progress tracking, mastery, persistence, and reset**
+- [x] **4. Add progress tracking, mastery, persistence, and reset**
   Becomes usable: Students can check off session blocks, mark topics mastered (reallocating freed hours), edit setup with reset confirmation, view completion cards, and have their entire state safely auto-saved in `localStorage` with malformed data recovery.
   Why now: Completes the full student workflow, edge case resilience, and persistence across browser reloads.
   PRD ref: `prd.md > 4. Progress Tracking (Daily Blocks & Topics)`, `prd.md > 6. Persistence & State Management`, `prd.md > Product Decisions`
