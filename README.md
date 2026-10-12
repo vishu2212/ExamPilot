@@ -2,7 +2,7 @@
 
 > **Adaptive, deterministic exam preparation planner for university students on tight deadlines.**
 
-[![Tests](https://img.shields.io/badge/tests-32%20passed-success)](tests/)
+[![Tests](https://img.shields.io/badge/tests-35%20passed-success)](tests/)
 [![Build](https://img.shields.io/badge/build-passing-brightgreen)](dist/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Zero Backend](https://img.shields.io/badge/architecture-100%25%20client--side-blue)]()
