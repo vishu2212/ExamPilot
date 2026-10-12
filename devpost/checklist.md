@@ -62,22 +62,31 @@ Build mode: fast
 ## Hands-on Checkpoints
 
 - [x] Early usable behavior explored — Slice 2 (Sample exam plan generation and initial schedule display)
-- [ ] Final kick-the-tires exploration and feedback completed — Slice 4/5 (Full interactive recovery, progress tracking, persistence, and demo flow)
+- [x] Final kick-the-tires exploration and feedback completed — Slice 4/5 (Full interactive recovery, progress tracking, persistence, and demo flow)
 
 ## Final Review
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete — feedback resolved and learner confirms ready to ship
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
-- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
+- [x] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence: [to be recorded upon completion]
-Route and stops: [to be recorded upon completion]
-Edit outcome: [to be recorded upon completion]
-Reflection: [to be recorded upon completion]
-Activity mode: [to be recorded upon completion]
+Activity and evidence: Verified complete test suite (29 tests across 6 files), production bundle (dist built cleanly in 859ms), and interactive dev server. Generated self-contained interactive devpost/app-map.html documenting the 5 core subsystems, Golden Demo state machine, and Invariants 1-10 audit table.
+Route and stops:
+1. `src/lib/scheduler.js`: Pure integer half-hour units and deterministic priority ranking `importanceWeight * (6 - confidence)`.
+2. `src/lib/diffEngine.js`: Pairwise schedule comparison calculating honest net deltas, buffer shrinkage, and triage deficits.
+3. `src/lib/storage.js`: Robust LocalStorage persistence (`exampilot:v1`) with corrupt schema quarantine (`exampilot:v1:corrupt`).
+4. `src/components/MissedTimeDialog.jsx` & `RecoveryBanner.jsx`: Transparent user-facing recovery with immutable completed blocks.
+5. `src/App.jsx`: State hub coordinating reactive scheduling, real-time validations, and reset/edit confirmations.
+Edit outcome: Zero architectural divergence from approved spec.md; all 10 invariants validated through automated tests.
+Reflection:
+1. **Plan-First Development:** Investing heavily in scope.md, prd.md, and spec.md before writing code prevented scope creep, clarified boundary cases (such as immutable completed blocks and non-negotiable capacity limits), and eliminated downstream rework.
+2. **Deterministic Scheduling over AI Black-Boxes:** Students cannot trust exam planners that silently hallucinate schedules or fluctuate between page refreshes. Implementing a pure deterministic integer-unit engine guarantees explainability, mathematical honesty, and 100% reproducible schedule diffs.
+3. **AI-Assisted Implementation:** Leveraging AI for rapid scaffolding and test authoring is most effective when guided by strict mathematical invariants and domain models, preventing AI from proposing "convenient shortcuts" like floating-point hours or fuzzy recovery heuristics.
+4. **Testing Real Invariants over Trusting Generated Code:** Comprehensive invariant tests (invariants 1–10) and end-to-end user scenario testing caught DOM timing bugs, edge-case capacities, and UI state synchronization issues that static inspection could not.
+Activity mode: Comprehensive learning reflection and architecture mapping.
 
 ## Revisions
