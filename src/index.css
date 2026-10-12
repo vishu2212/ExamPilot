@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@theme {
+  --font-sans: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --color-paper: #FAF8F4;
+  --color-surface: #FFFFFF;
+  --color-line: #E7E3DC;
+  --color-ink: #0F172A;
+  --color-ink-muted: #475569;
+  --color-accent: #4F46E5;
+  --color-accent-soft: #EEF2FF;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  min-height: 100vh;
+}
