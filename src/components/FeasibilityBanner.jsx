@@ -24,7 +24,7 @@ export function FeasibilityBanner({ derived, topics }) {
           <div className="flex-1">
             <h3 className="text-sm font-semibold text-emerald-950">Plan fits your available time</h3>
             <p className="mt-0.5 text-xs text-emerald-800">
-              All {formatHours(totalRemainingUnits)} of estimated study effort fit within your {formatHours(totalAvailableFutureUnits)} of study capacity.
+              All {formatHours(totalRemainingUnits)} of remaining study effort fit within your {formatHours(totalAvailableFutureUnits)} of available study capacity.
               {totalBufferUnits > 0 && (
                 <span className="ml-1 font-medium text-emerald-900">
                   Includes a {formatHours(totalBufferUnits)} review buffer on final days before your exam.

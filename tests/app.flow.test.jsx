@@ -61,7 +61,7 @@ describe('App Integration & End-to-End Golden Flow', () => {
     expect(screen.getByText(/Shortfall grew from 0h to 1h/i)).toBeDefined();
 
     // 5. Test Mastery: In Topics sidebar, mark Arrays as Mastered
-    const masteredButtons = screen.getAllByRole('button', { name: /^mastered$/i });
+    const masteredButtons = screen.getAllByRole('button', { name: /mark mastered|master/i });
     // Arrays is the 4th topic
     const arraysMasteredBtn = masteredButtons[masteredButtons.length - 1];
     await user.click(arraysMasteredBtn);

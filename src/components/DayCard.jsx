@@ -26,7 +26,7 @@ export function DayCard({
     .filter((b) => b.status === 'planned')
     .reduce((sum, b) => sum + b.units, 0);
 
-  const allocatedUnits = completedUnits + plannedUnits;
+  const usedUnits = completedUnits + plannedUnits + missedUnits;
 
   return (
     <div
@@ -61,7 +61,7 @@ export function DayCard({
             </span>
           )}
           <span className="rounded-md bg-slate-100 px-2 py-0.5 text-xs font-medium tabular-nums text-[#475569]">
-            {formatHours(allocatedUnits)} / {formatHours(dailyUnits)}
+            {formatHours(usedUnits)} / {formatHours(dailyUnits)}
           </span>
         </div>
       </div>
