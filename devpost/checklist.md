@@ -49,7 +49,7 @@ Build mode: fast
   Learner check: Check a study block, reload the page to verify it persists, test "Mark Mastered" on Arrays to see freed hours reallocated, and test the "Reset Plan" confirmation dialog.
   Commit: `Add progress tracking, mastery, persistence, and reset`
 
-- [ ] **5. Add automated invariant and golden demo integration tests**
+- [x] **5. Add automated invariant and golden demo integration tests**
   Becomes usable: A comprehensive automated Vitest test suite and React Testing Library integration test suite running in CI or local terminal (`npm test`) that verifies invariants 1–10 and all PRD acceptance criteria.
   Why now: Verifies the entire system against the formal technical specification, preventing regressions and providing verifiable evidence of correctness.
   PRD ref: `prd.md > Acceptance criteria across all sections`

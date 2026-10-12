@@ -3,6 +3,7 @@ import {
   priority,
   rankTopics,
   generatePlan,
+  recalculate,
   derive,
   computeBudgets
 } from '../src/lib/scheduler.js';
@@ -112,5 +113,41 @@ describe('Deterministic Scheduler Engine', () => {
 
     const sum = Object.values(budgets).reduce((a, b) => a + b, 0);
     expect(sum).toBe(6);
+  });
+
+  it('verifies determinism (Invariant 8): same input twice produces deep-equal output', () => {
+    const sampleSetup = buildSampleSetup(baseToday);
+    const plan1 = generatePlan(sampleSetup, baseToday);
+    const plan2 = generatePlan(sampleSetup, baseToday);
+    expect(plan1).toEqual(plan2);
+  });
+
+  it('handles zero remaining capacity gracefully without crashing', () => {
+    const sampleSetup = buildSampleSetup(baseToday);
+    let plan = generatePlan(sampleSetup, baseToday);
+
+    // Miss all 4h on all 4 days
+    plan = {
+      ...plan,
+      missedUnitsByDay: { 0: 8, 1: 8, 2: 8, 3: 8 }
+    };
+    plan = recalculate(plan, 0);
+
+    const derived = derive(plan, 0);
+    expect(derived.totalAvailableFutureUnits).toBe(0);
+    expect(derived.totalDeficitUnits).toBe(derived.totalRemainingUnits);
+    expect(derived.isTriage).toBe(true);
+    expect(Object.values(derived.atRiskByTopic).every(Boolean)).toBe(true);
+  });
+
+  it('handles exam day boundary (todayIndex >= numDays) without crashing', () => {
+    const sampleSetup = buildSampleSetup(baseToday);
+    const plan = generatePlan(sampleSetup, baseToday);
+
+    // If today is day 4 (exam day)
+    const recalculated = recalculate(plan, 4);
+    const derived = derive(recalculated, 4);
+    expect(derived.totalAvailableFutureUnits).toBe(0);
+    expect(derived.totalDeficitUnits).toBe(derived.totalRemainingUnits);
   });
 });
