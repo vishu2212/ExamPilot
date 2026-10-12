@@ -9,7 +9,7 @@ Build mode: fast
 
 ## Slices
 
-- [ ] **1. Scaffold dashboard shell and exam setup form**
+- [x] **1. Scaffold dashboard shell and exam setup form**
   Becomes usable: A running React + Vite + Tailwind web app with the full editorial layout shell (Header, ExamSetupForm with topic rows and validation, EmptyState, ScheduleView container, and Footer). The form can be filled out, topics can be added or removed, and input validation runs with clean visual feedback.
   Why now: Bootstraps the project, installs dependencies, configures Tailwind v4 and the Inter font, and establishes the responsive UI layout so every subsequent logic slice immediately renders onto a real surface.
   PRD ref: `prd.md > 1. Exam Configuration & Sample Preload`, `prd.md > Screens and Layout`, `prd.md > Look and Feel`
@@ -19,7 +19,7 @@ Build mode: fast
   Learner check: Start `npm run dev`, open the browser at `http://localhost:5173`, and confirm the warm off-white layout, responsive typography, and topic add/remove buttons work smoothly.
   Commit: `Scaffold dashboard shell and exam setup form`
 
-- [ ] **2. Implement deterministic scheduler and schedule display**
+- [x] **2. Implement deterministic scheduler and schedule display**
   Becomes usable: Clicking "Generate Study Plan" or "Load Sample Exam" runs the pure scheduling heuristic and renders interactive DayCards with StudyBlock items, priority badges, topic progress bars, and the Feasibility/Triage banner.
   Why now: The scheduling engine is the core calculation engine of ExamPilot. It must produce verifiable, capacity-constrained daily allocations before recovery or state mutation can be built.
   PRD ref: `prd.md > 1. Exam Configuration & Sample Preload`, `prd.md > 2. Intelligent Prioritized Schedule Generation`, `prd.md > 3. Honest Feasibility & Triage Feedback`
@@ -61,7 +61,7 @@ Build mode: fast
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored — Slice 2 (Sample exam plan generation and initial schedule display)
+- [x] Early usable behavior explored — Slice 2 (Sample exam plan generation and initial schedule display)
 - [ ] Final kick-the-tires exploration and feedback completed — Slice 4/5 (Full interactive recovery, progress tracking, persistence, and demo flow)
 
 ## Final Review
