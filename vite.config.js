@@ -9,6 +9,8 @@ export default defineConfig({
   ],
   test: {
     environment: 'jsdom',
-    globals: true
+    globals: true,
+    include: ['tests/**/*.{test,spec}.?(c|m)[jt]s?(x)'],
+    exclude: ['e2e/**', 'node_modules/**', 'dist/**']
   }
 })
