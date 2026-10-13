@@ -17,13 +17,13 @@ export function StudyBlock({ block, topic, onToggle, isPast = false }) {
       }`}
     >
       <div className="flex items-center gap-3">
-        <label className="relative flex cursor-pointer items-center">
+        <label className="relative flex cursor-pointer items-center justify-center min-w-[44px] min-h-[44px] -m-2 p-2 touch-manipulation">
           <input
             type="checkbox"
             checked={isCompleted}
             onChange={() => onToggle && onToggle(block.id)}
             disabled={!onToggle}
-            className="h-4 w-4 rounded border-slate-300 text-[#4F46E5] focus:ring-[#4F46E5] focus:ring-offset-0 disabled:cursor-not-allowed"
+            className="h-5 w-5 sm:h-4 sm:w-4 rounded border-slate-300 text-[#4F46E5] focus:ring-[#4F46E5] focus:ring-offset-0 disabled:cursor-not-allowed cursor-pointer"
           />
         </label>
         <div>

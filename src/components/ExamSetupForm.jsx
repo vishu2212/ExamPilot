@@ -79,8 +79,8 @@ export function ExamSetupForm({
   };
 
   return (
-    <div className="rounded-2xl border border-[#E7E3DC] bg-[#FFFFFF] p-6 shadow-xs">
-      <div className="mb-6 flex items-center justify-between">
+    <div className="rounded-2xl border border-[#E7E3DC] bg-[#FFFFFF] p-4 sm:p-6 shadow-xs">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="text-lg font-semibold tracking-tight text-[#0F172A]">
             {isEditing ? 'Edit Exam Setup' : 'Configure Exam'}
@@ -93,7 +93,7 @@ export function ExamSetupForm({
           <button
             type="button"
             onClick={onLoadSample}
-            className="rounded-lg border border-[#E7E3DC] bg-[#FAF8F4] px-3 py-1.5 text-xs font-medium text-[#4F46E5] transition-colors hover:bg-indigo-50"
+            className="w-full sm:w-auto text-center rounded-lg border border-[#E7E3DC] bg-[#FAF8F4] px-3.5 py-2 sm:px-3 sm:py-1.5 text-xs font-medium text-[#4F46E5] transition-colors hover:bg-indigo-50 touch-manipulation min-h-[36px]"
           >
             Load Sample (CS 201)
           </button>
@@ -188,7 +188,7 @@ export function ExamSetupForm({
                       placeholder={`Topic ${index + 1} name`}
                       value={topic.name}
                       onChange={(e) => handleTopicChange(index, 'name', e.target.value)}
-                      className={`flex-1 rounded-lg border px-3 py-1.5 text-sm text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#4F46E5] ${
+                      className={`flex-1 rounded-lg border px-3 py-2 sm:py-1.5 text-sm text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#4F46E5] ${
                         rowErr?.name ? 'border-rose-400 bg-rose-50/30' : 'border-[#E7E3DC] bg-[#FFFFFF]'
                       }`}
                     />
@@ -196,7 +196,7 @@ export function ExamSetupForm({
                       <button
                         type="button"
                         onClick={() => handleRemoveTopic(index)}
-                        className="rounded-lg p-1.5 text-[#475569] hover:bg-rose-50 hover:text-rose-600"
+                        className="rounded-lg p-2 min-w-[36px] min-h-[36px] flex items-center justify-center text-[#475569] hover:bg-rose-50 hover:text-rose-600 touch-manipulation"
                         title="Remove topic"
                       >
                         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -220,7 +220,7 @@ export function ExamSetupForm({
                             key={lvl}
                             type="button"
                             onClick={() => handleTopicChange(index, 'confidence', lvl)}
-                            className={`flex-1 rounded-md py-1 text-xs font-semibold transition-colors ${
+                            className={`flex-1 rounded-md py-2 sm:py-1 min-h-[36px] sm:min-h-[28px] text-xs font-semibold transition-colors touch-manipulation ${
                               topic.confidence === lvl
                                 ? 'bg-[#4F46E5] text-white'
                                 : 'bg-white text-[#475569] border border-[#E7E3DC] hover:bg-slate-50'
@@ -247,7 +247,7 @@ export function ExamSetupForm({
                         id={`importance-${index}`}
                         value={topic.importance}
                         onChange={(e) => handleTopicChange(index, 'importance', e.target.value)}
-                        className="mt-1 w-full rounded-md border border-[#E7E3DC] bg-white px-2 py-1 text-xs font-medium text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]"
+                        className="mt-1 w-full rounded-md border border-[#E7E3DC] bg-white px-2.5 py-2 sm:py-1 text-sm sm:text-xs font-medium text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]"
                       >
                         <option value="high">High</option>
                         <option value="medium">Medium</option>
@@ -276,7 +276,7 @@ export function ExamSetupForm({
                         onChange={(e) =>
                           handleTopicChange(index, 'estimatedHours', parseFloat(e.target.value) || 0)
                         }
-                        className={`mt-1 w-full rounded-md border px-2 py-1 text-xs tabular-nums text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#4F46E5] ${
+                        className={`mt-1 w-full rounded-md border px-2.5 py-2 sm:py-1 text-sm sm:text-xs tabular-nums text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#4F46E5] ${
                           rowErr?.estimatedHours
                             ? 'border-rose-400 bg-rose-50/30'
                             : 'border-[#E7E3DC] bg-white'
@@ -294,19 +294,19 @@ export function ExamSetupForm({
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3 pt-2">
+        <div className="flex flex-col-reverse sm:flex-row gap-3 pt-2">
           {isEditing && (
             <button
               type="button"
               onClick={onCancelEdit}
-              className="flex-1 rounded-xl border border-[#E7E3DC] bg-white py-2.5 text-sm font-medium text-[#475569] hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-300"
+              className="w-full sm:flex-1 rounded-xl border border-[#E7E3DC] bg-white py-3 sm:py-2.5 text-sm font-medium text-[#475569] hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-300 text-center touch-manipulation min-h-[44px]"
             >
               Cancel
             </button>
           )}
           <button
             type="submit"
-            className="flex-1 rounded-xl bg-[#4F46E5] py-2.5 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:ring-offset-2"
+            className="w-full sm:flex-1 rounded-xl bg-[#4F46E5] py-3 sm:py-2.5 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:ring-offset-2 text-center touch-manipulation min-h-[44px]"
           >
             {isEditing ? 'Confirm & Regenerate Plan' : 'Generate Study Plan'}
           </button>

@@ -178,7 +178,7 @@ export default function App() {
         daysUntilExam={daysUntilExam}
       />
 
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6">
+      <main className="mx-auto w-full max-w-6xl flex-1 px-3.5 py-5 sm:px-6 sm:py-8">
         {/* Safe recovery notice if localStorage data was invalid or corrupted */}
         {storageNotice && (
           <div className="mb-6 flex items-center justify-between gap-3 rounded-2xl border border-amber-300 bg-amber-50 p-4 text-xs font-medium text-amber-900 shadow-xs">
@@ -200,7 +200,7 @@ export default function App() {
 
         {!planState ? (
           /* Empty / Initial State */
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <ExamSetupForm
                 key={formKey}
@@ -227,10 +227,10 @@ export default function App() {
               />
             )}
 
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+            <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-12">
               {/* Left Column: Topics overview and Setup editor */}
               <div className="space-y-6 lg:col-span-5">
-                <div className="flex items-center justify-between rounded-2xl border border-[#E7E3DC] bg-white p-4 shadow-xs">
+                <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E7E3DC] bg-white p-4 shadow-xs">
                   <div>
                     <h3 className="text-sm font-semibold text-[#0F172A]">{planState.exam.subject}</h3>
                     <p className="text-xs text-[#475569]">
@@ -240,7 +240,7 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => setShowEditForm((prev) => !prev)}
-                    className="rounded-lg border border-[#E7E3DC] bg-[#FAF8F4] px-2.5 py-1 text-xs font-medium text-[#475569] hover:bg-slate-100"
+                    className="rounded-lg border border-[#E7E3DC] bg-[#FAF8F4] px-3 py-1.5 sm:px-2.5 sm:py-1 text-xs font-medium text-[#475569] hover:bg-slate-100 min-h-[36px] flex items-center touch-manipulation"
                   >
                     {showEditForm ? 'Hide Setup' : 'Edit Setup'}
                   </button>

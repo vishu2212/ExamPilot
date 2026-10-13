@@ -30,7 +30,7 @@ export function DayCard({
 
   return (
     <div
-      className={`rounded-2xl border p-5 shadow-xs transition-all ${
+      className={`rounded-2xl border p-4 sm:p-5 shadow-xs transition-all ${
         isToday
           ? 'border-indigo-300 bg-white ring-2 ring-indigo-100'
           : isPast
@@ -39,7 +39,7 @@ export function DayCard({
       }`}
     >
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
           <span className="font-semibold text-[#0F172A]">Day {dayIndex + 1}</span>
           <span className="text-xs text-[#475569]">· {formattedDate}</span>
           {isToday && (
@@ -84,7 +84,7 @@ export function DayCard({
         ))}
 
         {reviewBufferUnits > 0 && (
-          <div className="flex items-center justify-between rounded-xl border border-dashed border-emerald-200 bg-emerald-50/40 p-3 text-xs text-emerald-900">
+          <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-dashed border-emerald-200 bg-emerald-50/40 p-3 text-xs text-emerald-900">
             <div className="flex items-center gap-2">
               <svg className="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />

@@ -8,7 +8,7 @@ export function TopicProgressList({ topics, derived, onToggleMastered }) {
   const ranked = rankTopics(topics);
 
   return (
-    <div className="rounded-2xl border border-[#E7E3DC] bg-white p-5 shadow-xs">
+    <div className="rounded-2xl border border-[#E7E3DC] bg-white p-4 sm:p-5 shadow-xs">
       <h3 className="text-sm font-semibold tracking-tight text-[#0F172A]">
         Topic Coverage & Priorities
       </h3>
@@ -16,7 +16,7 @@ export function TopicProgressList({ topics, derived, onToggleMastered }) {
         Allocations ordered by Priority = Importance × (6 − Confidence)
       </p>
 
-      <div className="mt-4 space-y-3.5">
+      <div className="mt-4 space-y-3">
         {ranked.map((topic) => {
           const comp = derived.completedByTopic[topic.id] || 0;
           const unalloc = derived.unallocatedByTopic[topic.id] || 0;
@@ -31,9 +31,9 @@ export function TopicProgressList({ topics, derived, onToggleMastered }) {
 
           return (
             <div key={topic.id} className="rounded-xl border border-[#E7E3DC] bg-[#FAF8F4]/40 p-3">
-              <div className="flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-medium text-[#0F172A]">{topic.name}</span>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 min-w-0">
+                  <span className="text-sm font-medium text-[#0F172A] break-words">{topic.name}</span>
                   <span
                     className={`rounded-md px-1.5 py-0.5 text-[10px] font-semibold ${
                       priScore >= 12
@@ -62,7 +62,7 @@ export function TopicProgressList({ topics, derived, onToggleMastered }) {
                   )}
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 shrink-0">
                   <span className="text-xs tabular-nums text-[#475569]">
                     {formatHours(comp)} / {formatHours(topic.estimatedUnits)}
                   </span>
@@ -70,10 +70,10 @@ export function TopicProgressList({ topics, derived, onToggleMastered }) {
                     <button
                       type="button"
                       onClick={() => onToggleMastered(topic.id)}
-                      className={`text-[11px] font-medium transition-colors ${
+                      className={`text-[11px] font-medium transition-colors min-h-[30px] flex items-center touch-manipulation ${
                         isMastered
-                          ? 'text-[#475569] hover:text-[#0F172A] hover:underline'
-                          : 'rounded-md border border-[#E7E3DC] bg-white px-2 py-0.5 text-[#4F46E5] shadow-2xs hover:border-indigo-200 hover:bg-indigo-50'
+                          ? 'text-[#475569] hover:text-[#0F172A] hover:underline px-1'
+                          : 'rounded-md border border-[#E7E3DC] bg-white px-2.5 py-1 text-[#4F46E5] shadow-2xs hover:border-indigo-200 hover:bg-indigo-50'
                       }`}
                       title={isMastered ? 'Undo mastery and return to study plan' : 'Mark topic as already mastered'}
                     >

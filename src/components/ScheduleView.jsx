@@ -46,7 +46,7 @@ export function ScheduleView({
       <FeasibilityBanner derived={derived} topics={topics} />
 
       {/* Schedule Header with Action */}
-      <div className="flex flex-wrap items-center justify-between gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="text-lg font-semibold tracking-tight text-[#0F172A]">
             Daily Study Schedule
@@ -61,7 +61,7 @@ export function ScheduleView({
             type="button"
             onClick={onOpenMissedModal}
             disabled={todayFreeUnits <= 0}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-3 py-1.5 text-xs font-semibold text-rose-700 shadow-xs transition-colors hover:bg-rose-100 hover:text-rose-800 disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full sm:w-auto justify-center inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-3.5 py-2 sm:px-3 sm:py-1.5 text-xs font-semibold text-rose-700 shadow-xs transition-colors hover:bg-rose-100 hover:text-rose-800 disabled:cursor-not-allowed disabled:opacity-50 min-h-[38px] touch-manipulation"
             title={todayFreeUnits <= 0 ? 'No study hours left to miss today' : 'Report missed study time'}
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
